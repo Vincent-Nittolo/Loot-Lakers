@@ -14,7 +14,14 @@ class File:
         self._win = "Assets/winnerPicture.png"
         self._death = "Assets/death.mp3"
         self._win_sound = "Assets/win.mp3"
-        self._dance = ""
+        self._dance = "Assets/default_dance.jpg"
+        self._dance_sound = "Assets/default_dance.mp3"
+        self._hitmarker = "Assets/hitmarker.jpg"
+        self._hitmarker_sound = "Assets/hitmarker_sound.mp3"
+        self._goofy_laugh = "Assets/goofy_laugh.jpg"
+        self._goofy_laugh_sound = "Assets/goofy_laugh_sound.mp3"
+        self._fall = "Assets/fall.jpg"
+        self._fall_sound = "Assets/fall_sound.mp3"
 
     @property
     def title(self):
@@ -61,4 +68,25 @@ class File:
     @property
     def dance(self):
         return self._dance
+    @property
+    def dance_sound(self):
+        return self._dance_sound
+    @property
+    def hitmarker(self):
+        return self._hitmarker
+    @property
+    def hitmarker_sound(self):
+        return self._hitmarker_sound
+    @property
+    def goofy_laugh(self):
+        return self._goofy_laugh
+    @property
+    def goofy_laugh_sound(self):
+        return self._goofy_laugh_sound
+    @property
+    def fall(self):
+        return self._fall
+    @property
+    def fall_sound(self):
+        return self._fall_sound
 
