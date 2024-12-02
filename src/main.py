@@ -21,6 +21,23 @@ vals = Values(pygame, file)
 board = []
 make_board(board, random)
 
+#load images and define their rectangles
+dance_image = pygame.image.load(file.dance)
+dance_image = pygame.transform.scale(dance_image, (200, 200))
+dance_rect = pygame.Rect(1600, 100, 200, 200)
+
+goofy_laugh_image = pygame.image.load(file.goofy_laugh)
+goofy_laugh_image = pygame.transform.scale(goofy_laugh_image, (200, 200))
+goofy_laugh_rect = pygame.Rect(1600, 300, 200, 200)
+
+hitmarker_image = pygame.image.load(file.hitmarker)
+hitmarker_image = pygame.transform.scale(hitmarker_image, (200, 200))
+hitmarker_rect = pygame.Rect(1600, 500, 200, 200)
+
+fall_image = pygame.image.load(file.fall)
+fall_image = pygame.transform.scale(fall_image, (200, 200))
+fall_rect = pygame.Rect(1600, 700, 200, 200)
+
 #sets the window name
 pygame.display.set_caption('Fortnite Monopoly')
 
@@ -57,7 +74,25 @@ while status:
                 settings_button(vals)
 
                 info_button(vals)
-
+        
+                # Check for image click when full screen is active and settings are closed
+                if vals.full_screen and not vals.SETTINGS and dance_rect.collidepoint(vals.mx, vals.my):
+                    mixer.music.load(file.dance_sound)
+                    pygame.mixer.music.queue(file.music)
+                    mixer.music.play()
+                if vals.full_screen and not vals.SETTINGS and goofy_laugh_rect.collidepoint(vals.mx, vals.my):
+                    mixer.music.load(file.goofy_laugh_sound)
+                    pygame.mixer.music.queue(file.music)
+                    mixer.music.play()
+                if vals.full_screen and not vals.SETTINGS and hitmarker_rect.collidepoint(vals.mx, vals.my):
+                    mixer.music.load(file.hitmarker_sound)
+                    pygame.mixer.music.queue(file.music)
+                    mixer.music.play()
+                if vals.full_screen and not vals.SETTINGS and fall_rect.collidepoint(vals.mx, vals.my):
+                    mixer.music.load(file.fall_sound)
+                    pygame.mixer.music.queue(file.music)
+                    mixer.music.play()
+                
                 #Next Turn
                 roll_dice(vals, mixer, file, pygame, board, random)
 
@@ -92,7 +127,12 @@ while status:
 
         elif i.type == MOUSEBUTTONUP and i.button == 1:
             vals.clicking = False
-        if vals.full_screen:
+        #display the dance image in full-screen mode only if settings is closed
+        if vals.full_screen and not vals.SETTINGS:
+            scrn.blit(dance_image, dance_rect.topleft)
+            scrn.blit(hitmarker_image, hitmarker_rect.topleft)
+            scrn.blit(goofy_laugh_image, goofy_laugh_rect.topleft)
+            scrn.blit(fall_image, fall_rect.topleft)
             print_easter_egg(scrn, pygame, vals)
         print_start(scrn, pygame, file, vals)
         print_dice(pygame, scrn, vals)
