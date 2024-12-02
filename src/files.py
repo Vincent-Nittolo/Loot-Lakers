@@ -22,6 +22,11 @@ class File:
         self._goofy_laugh_sound = "Assets/goofy_laugh_sound.mp3"
         self._fall = "Assets/fall.jpg"
         self._fall_sound = "Assets/fall_sound.mp3"
+        self._cat = "Assets/cat.jpg"
+        self._slang_sound = "Assets/slang_sound.mp3"
+        self._cricket = "Assets/cricket.jpg"
+        self._cricket_sound = "Assets/cricket_sound.mp3"
+
 
     @property
     def title(self):
@@ -89,4 +94,15 @@ class File:
     @property
     def fall_sound(self):
         return self._fall_sound
-
+    @property
+    def cat(self):
+        return self._cat
+    @property
+    def slang_sound(self):
+        return self._slang_sound
+    @property
+    def cricket(self):
+        return self._cricket
+    @property
+    def cricket_sound(self):
+        return self._cricket_sound
