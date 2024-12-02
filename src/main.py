@@ -23,20 +23,28 @@ make_board(board, random)
 
 #load images and define their rectangles
 dance_image = pygame.image.load(file.dance)
-dance_image = pygame.transform.scale(dance_image, (200, 200))
-dance_rect = pygame.Rect(1600, 100, 200, 200)
+dance_image = pygame.transform.scale(dance_image, (150, 150))
+dance_rect = pygame.Rect(1600, 000, 150, 150)
 
 goofy_laugh_image = pygame.image.load(file.goofy_laugh)
-goofy_laugh_image = pygame.transform.scale(goofy_laugh_image, (200, 200))
-goofy_laugh_rect = pygame.Rect(1600, 300, 200, 200)
+goofy_laugh_image = pygame.transform.scale(goofy_laugh_image, (150, 150))
+goofy_laugh_rect = pygame.Rect(1600, 150, 150, 150)
 
 hitmarker_image = pygame.image.load(file.hitmarker)
-hitmarker_image = pygame.transform.scale(hitmarker_image, (200, 200))
-hitmarker_rect = pygame.Rect(1600, 500, 200, 200)
+hitmarker_image = pygame.transform.scale(hitmarker_image, (150, 150))
+hitmarker_rect = pygame.Rect(1600, 300, 150, 150)
 
 fall_image = pygame.image.load(file.fall)
-fall_image = pygame.transform.scale(fall_image, (200, 200))
-fall_rect = pygame.Rect(1600, 700, 200, 200)
+fall_image = pygame.transform.scale(fall_image, (150, 150))
+fall_rect = pygame.Rect(1600, 450, 150, 150)
+
+cat_image = pygame.image.load(file.cat)
+cat_image = pygame.transform.scale(cat_image, (150, 150))
+cat_rect = pygame.Rect(1600, 600, 150, 150)
+
+cricket_image = pygame.image.load(file.cricket)
+cricket_image = pygame.transform.scale(cricket_image, (150, 150))
+cricket_rect = pygame.Rect(1600, 750, 150, 150)
 
 #sets the window name
 pygame.display.set_caption('Fortnite Monopoly')
@@ -80,18 +88,32 @@ while status:
                     mixer.music.load(file.dance_sound)
                     pygame.mixer.music.queue(file.music)
                     mixer.music.play()
+                    mixer.music.set_volume(1)
                 if vals.full_screen and not vals.SETTINGS and goofy_laugh_rect.collidepoint(vals.mx, vals.my):
                     mixer.music.load(file.goofy_laugh_sound)
                     pygame.mixer.music.queue(file.music)
                     mixer.music.play()
+                    mixer.music.set_volume(1)
                 if vals.full_screen and not vals.SETTINGS and hitmarker_rect.collidepoint(vals.mx, vals.my):
                     mixer.music.load(file.hitmarker_sound)
                     pygame.mixer.music.queue(file.music)
                     mixer.music.play()
+                    mixer.music.set_volume(1)
                 if vals.full_screen and not vals.SETTINGS and fall_rect.collidepoint(vals.mx, vals.my):
                     mixer.music.load(file.fall_sound)
                     pygame.mixer.music.queue(file.music)
                     mixer.music.play()
+                    mixer.music.set_volume(0.15)
+                if vals.full_screen and not vals.SETTINGS and cat_rect.collidepoint(vals.mx, vals.my):
+                    mixer.music.load(file.slang_sound)
+                    pygame.mixer.music.queue(file.music)
+                    mixer.music.play()
+                    mixer.music.set_volume(1)
+                if vals.full_screen and not vals.SETTINGS and cricket_rect.collidepoint(vals.mx, vals.my):
+                    mixer.music.load(file.cricket_sound)
+                    pygame.mixer.music.queue(file.music)
+                    mixer.music.play()
+                    mixer.music.set_volume(1)
                 
                 #Next Turn
                 roll_dice(vals, mixer, file, pygame, board, random)
@@ -133,6 +155,8 @@ while status:
             scrn.blit(hitmarker_image, hitmarker_rect.topleft)
             scrn.blit(goofy_laugh_image, goofy_laugh_rect.topleft)
             scrn.blit(fall_image, fall_rect.topleft)
+            scrn.blit(cat_image, cat_rect.topleft)
+            scrn.blit(cricket_image, cricket_rect.topleft)
             print_easter_egg(scrn, pygame, vals)
         print_start(scrn, pygame, file, vals)
         print_dice(pygame, scrn, vals)
