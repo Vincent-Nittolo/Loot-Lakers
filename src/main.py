@@ -83,8 +83,7 @@ while status:
                 continue_button(vals)
 
             if vals.GAME:
-                if (
-                        vals.p_4.CPU and vals.player == 4):  # or (vals.p_2.CPU and vals.player == 2) or (vals.p_3.CPU and vals.player == 3) or vals.p_4.CPU and vals.player == 4):
+                if (vals.p_4.CPU and vals.player == 4):  # or (vals.p_2.CPU and vals.player == 2) or (vals.p_3.CPU and vals.player == 3) or vals.p_4.CPU and vals.player == 4):
                     roll_dice(vals, mixer, file, pygame, board, random)
 
                     check_doubles(vals)
