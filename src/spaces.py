@@ -242,4 +242,3 @@ def make_board(board, random):
         p_palms = Spaces('Paradise Palms', 610, 541, p, True)
         board.append(p_palms)
         p += 1
-
