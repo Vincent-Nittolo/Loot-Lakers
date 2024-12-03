@@ -25,6 +25,7 @@ class Players:
         self._health = 50
         self._jail = False
         self._doubles_count = 0
+        self._CPU = True
 
     # returns the name of the player
     @property
@@ -151,6 +152,14 @@ class Players:
         if self.doubles_count == 3:
             self.jail = True
             self.space = 8
+
+    @property
+    def CPU(self):
+        return self._CPU
+
+    @CPU.setter
+    def CPU(self, tf):
+        self._CPU = tf
 
     # sets the name of the player depending on what icon they chose
     def set_playa(self, num, file):
