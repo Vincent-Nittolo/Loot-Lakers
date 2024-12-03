@@ -26,7 +26,10 @@ class File:
         self._slang_sound = "Assets/slang_sound.mp3"
         self._cricket = "Assets/cricket.jpg"
         self._cricket_sound = "Assets/cricket_sound.mp3"
-
+        self._solo = "Assets/solo.jpg"
+        self._duos = "Assets/duos.jpeg"
+        self._trios = "Assets/trios.jpg"
+        self._squads = "Assets/squads.jpg"
 
     @property
     def title(self):
@@ -106,3 +109,19 @@ class File:
     @property
     def cricket_sound(self):
         return self._cricket_sound
+
+    @property
+    def solo(self):
+        return self._solo
+
+    @property
+    def duos(self):
+        return self._duos
+
+    @property
+    def trios(self):
+        return self._trios
+
+    @property
+    def squads(self):
+        return self._squads
