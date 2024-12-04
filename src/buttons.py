@@ -7,22 +7,54 @@ def start_button(vals):
        vals.START = False
        vals.SELEC = True
 
-def choose_players(vals):
-    if (100 < vals.jx < 400) and (100 < vals.jy < 400):
+def choose_players(vals, Players, file):
+    if (100 < vals.mx < 400) and (100 < vals.my < 400):
         print("You clicked the amount of players")
         vals._CHOOSE = False
         vals.num_players += 1
         vals.SELEC = True
+        p_2 = Players(2, vals.player, file)
+        p_2.set_start_val()
+        vals.p_2 = p_2
+        vals.player += 1
+        vals.plays.append(p_2)
+        p_3 = Players(3, vals.player, file)
+        p_3.set_start_val()
+        vals.p_3 = p_3
+        vals.player += 1
+        vals.plays.append(p_3)
+        p_4 = Players(4, vals.player, file)
+        p_4.set_start_val()
+        vals.p_4 = p_4
+        vals.player += 1
+        vals.plays.append(p_4)
+    
     elif (800 < vals.mx < 1100) and (100 < vals.my < 400):
         print("You clicked the amount of players")
         vals._CHOOSE = False
         vals.num_players += 1
         vals.SELEC = True
+        p_3 = Players(3, vals.player, file)
+        p_3.set_start_val()
+        vals.p_3 = p_3
+        vals.player += 1
+        vals.plays.append(p_3)
+        p_4 = Players(4, vals.player, file)
+        p_4.set_start_val()
+        vals.p_4 = p_4
+        vals.player += 1
+        vals.plays.append(p_4)
+
     elif (100 < vals.mx < 400) and (450 < vals.my < 750):
         print("You clicked the amount of players")
         vals._CHOOSE = False
         vals.num_players += 1
         vals.SELEC = True
+        p_4 = Players(4, vals.player, file)
+        p_4.set_start_val()
+        vals.p_4 = p_4
+        vals.player += 1
+        vals.plays.append(p_4)
     else:
         if (800 < vals.mx < 1100) and (450 < vals.my < 750):
             print("You clicked the amount of players")

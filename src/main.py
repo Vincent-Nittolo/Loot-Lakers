@@ -73,14 +73,15 @@ while status:
             if vals.START:
                 start_button(vals)
 
-            if vals.CHOOSE:
-                choose_players(vals)
+            elif vals.CHOOSE:
+                choose_players(vals, Players, file)
                 print_num_players(scrn, pygame, file, vals)
 
-            if vals.SELEC:
-                icons(vals, Players, file)
-                print_selec(scrn, pygame, file, vals)
-                continue_button(vals)
+            else:
+                if vals.SELEC:
+                    icons(vals, Players, file)
+                    print_selec(scrn, pygame, file, vals)
+                    continue_button(vals)
 
             if vals.GAME:
                 if (vals.p_4.CPU and vals.player == 4):  # or (vals.p_2.CPU and vals.player == 2) or (vals.p_3.CPU and vals.player == 3) or vals.p_4.CPU and vals.player == 4):
