@@ -175,7 +175,7 @@ def info_button(vals):
 
 
 def roll_dice(vals, mixer, file, pygame, board, random):
-    if ((875 < vals.mx < 1175) and (50 < vals.my < 750) and vals.DICE):
+    if ((875 < vals.mx < 1175) and (50 < vals.my < 750) and vals.DICE) and not vals.plays[vals.player-1].jail:
         # declares that the player just rolled
         vals.DICE = False
         vals.DOUBLES = False
@@ -285,7 +285,7 @@ def check_doubles(vals):
 
 
 def next_turn(vals, random):
-    if ((920 < vals.mx < 1130) and (5 < vals.my < 45) and not vals.DICE and not vals.DOUBLES):
+    if ((920 < vals.mx < 1130) and (5 < vals.my < 45) and not vals.DICE and not vals.DOUBLES) or (vals.plays[vals.player-1].jail):
         vals.plays[vals.player - 1].doubles_count = 0
         vals.DICE = True
         vals.DOUBLES = False
@@ -294,22 +294,27 @@ def next_turn(vals, random):
         vals.player += 1
         if vals.player > 4:
             vals.player -= 4
-            # if vals.player.CPU:
-            # CPU_Play(vals)
+            vals.nums_of_turns += 1
+
         if not vals.P1 and vals.player == 1:
             vals.player = 2
+            vals.nums_of_turns += 1
         if not vals.P2 and vals.player == 2:
             vals.player = 3
+            vals.nums_of_turns += 1
         if not vals.P3 and vals.player == 3:
             vals.player = 4
+            vals.nums_of_turns += 1
         if not vals.P4 and vals.player == 4:
             vals.player = 1
+            vals.nums_of_turns += 1
         if not vals.P1 and vals.player == 1:
             vals.player = 2
+            vals.nums_of_turns += 1
 
 
 def roll_again(vals, random):
-    if ((920 < vals.mx < 1130) and (5 < vals.my < 45)):
+    if (920 < vals.mx < 1130) and (5 < vals.my < 45) and not vals.plays[vals.player-1].jail:
         # resets the rolling values to allow the next turn
         vals.DICE = True
         vals.DOUBLES = False
@@ -321,7 +326,7 @@ def purchase(vals, board):
     if board[vals.plays[vals.player - 1].space].buyable and board[vals.plays[vals.player - 1].space] not in vals.plays[
         vals.player - 1].inventory:
         if vals.plays[vals.player - 1].money > board[vals.plays[vals.player - 1].space].price:
-            if ((669 < vals.mx < 852) and (700 < vals.my < 740)):
+            if (669 < vals.mx < 852) and (700 < vals.my < 740):
                 vals.plays[vals.player - 1].add_to_inventory(board[vals.plays[vals.player - 1].space])
                 board[vals.plays[vals.player - 1].space].buyable = False
                 vals.plays[vals.player - 1].money -= board[vals.plays[vals.player - 1].space].price
@@ -331,7 +336,7 @@ def purchase(vals, board):
 
 
 def pay(vals, board):
-    if board[vals.plays[vals.player - 1].space].name == 'Jail' and vals.plays[vals.player - 1].jail:
+    if vals.plays[vals.player-1].jail:
         if ((669 < vals.mx < 852) and (700 < vals.my < 740) and vals.plays[
             vals.player - 1].money >= 50):
             current_player = vals.plays[vals.player - 1]
