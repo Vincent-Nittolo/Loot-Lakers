@@ -48,7 +48,6 @@ while status:
 
             if vals.START:
                 start_button(vals)
-                '''t1 = True'''
 
             if vals._CHOOSE:
                 choose_players(vals, Players, file)
@@ -68,7 +67,6 @@ while status:
                 info_button(vals)
 
                 # Next Turn
-                '''if vals.plays[vals.player-1].CPU is True:'''
                 roll_dice(vals, mixer, file, pygame, board, random)
 
                 # Checks if the player rolls doubles
@@ -84,19 +82,7 @@ while status:
 
                 pay(vals, board)
 
-
-                '''if ((vals.p_1.CPU and vals.player == 1) or (vals.p_2.CPU and vals.player == 2) or (vals.p_3.CPU and vals.player == 3) or (vals.p_4.CPU and vals.player == 4)) and not t1 :
-                    roll_dice(vals, mixer, file, pygame, board, random)
-                    check_doubles(vals)
-                    if vals.DOUBLES:
-                        roll_again(vals, random)
-                        check_doubles(vals)
-                    purchase(vals, board)
-                    pay(vals, board)
-                    next_turn(vals, random)'''
-
                 print_board(scrn, pygame, file, vals, board)
-                '''t1 = False'''
 
             if vals.INFO:
                 print_info(scrn, pygame, file, vals)
@@ -114,8 +100,6 @@ while status:
 
             if vals.full_screen and not vals.SETTINGS:
                 sound_board(pygame, vals, file, mixer)
-            '''print(f'{vals.mx} {vals.my}')'''
-
 
         elif i.type == MOUSEBUTTONUP and i.button == 1:
             vals.clicking = False
@@ -125,22 +109,6 @@ while status:
 
         if vals.GAME:
             if vals.plays[vals.player-1].CPU is True:
-
-                '''roll_dice(vals, mixer, file, pygame, board, random)
-
-                # Checks if the player rolls doubles
-                check_doubles(vals)
-
-                # Player presses next turn
-                next_turn(vals, random)
-
-                # Player presses roll again
-                roll_again(vals, random)
-
-                purchase(vals, board)
-
-                pay(vals, board)'''
-
 
                 vals.mx = 880
                 vals.my = 60
