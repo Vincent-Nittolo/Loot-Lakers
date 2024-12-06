@@ -6,47 +6,96 @@ def start_button(vals):
         # TEST FOR WHEN THE START BUTTON HAS BEEN PRESSED
         print("You clicked start")
         vals.START = False
+        vals.CHOOSE = True
+
+def choose_players(vals, Players, file):
+    def choose_solos():
+        if (100 < vals.jx < 400) and (100 < vals.jy < 400):
+            print("solos")
+            vals.solos = True
+            vals.num_players = 1
+
+    def choose_duos():
+        if (800 < vals.jx < 1100) and (100 < vals.jy < 400):
+            print("duos")
+            vals.duos = True
+            vals.num_players = 2
+
+    def choose_trios():
+        if (100 < vals.jx < 400) and (450 < vals.jy < 750):
+            print("trios")
+            vals.trios = True
+            vals.num_players = 3
+
+    def choose_squads():
+        if (800 < vals.jx < 1100) and (450 < vals.jy < 750):
+            print("squads")
+            vals.squads = True
+            vals.num_players = 4
+
+    choose_solos()
+    choose_duos()
+    choose_trios()
+    choose_squads()
+
+def continue_button_1(vals):
+    if (510 < vals.mx < 690) and (480 < vals.my < 510) and (vals.solos or vals.duos or vals.trios or vals.squads):
+        # TEST FOR WHEN THE CONTINUE BUTTON HAS BEEN CLICKED
+        print("You clicked start Again")
+        vals.CHOOSE = False
         vals.SELEC = True
 
 def icon_nog_ops(vals, Players, file):
     if (100 < vals.mx < 400) and (100 < vals.my < 400) and vals.P1:
         # declares that P1 can no longer be used and increases whose turn it is to choose by 1
+        vals.num_players -= 1
         vals.P1 = False
         p_1 = Players(1, vals.player, file)
         p_1.set_start_val()
         vals.p_1 = p_1
+        print(f'{vals.player}')
         vals.player += 1
         vals.plays.append(p_1)
+
 
 def icon_jonesy(vals, Players, file):
     if (800 < vals.mx < 1100) and (100 < vals.my < 400) and vals.P2:
         # declares that P2 can no longer be used and increases whose turn it is to choose by 1
+        vals.num_players -= 1
         vals.P2 = False
         p_2 = Players(2, vals.player, file)
         p_2.set_start_val()
         vals.p_2 = p_2
+        print(f'{vals.player}')
         vals.player += 1
         vals.plays.append(p_2)
+
 
 def icon_raven(vals, Players, file):
     if (100 < vals.mx < 400) and (450 < vals.my < 750) and vals.P3:
         # declares that P3 can no longer be used and increases whose turn it is to choose by 1
+        vals.num_players -= 1
         vals.P3 = False
         p_3 = Players(3, vals.player, file)
         p_3.set_start_val()
         vals.p_3 = p_3
+        print(f'{vals.player}')
         vals.player += 1
         vals.plays.append(p_3)
+
 
 def icon_john_wick(vals, Players, file):
     if (800 < vals.mx < 1100) and (450 < vals.my < 750) and vals.P4:
         # declares that P4 can no longer be used and increases whose turn it is to choose by 1
+        vals.num_players -= 1
         vals.P4 = False
         p_4 = Players(4, vals.player, file)
         p_4.set_start_val()
         vals.p_4 = p_4
+        print(f'{vals.player}')
         vals.player += 1
         vals.plays.append(p_4)
+
 
 def icons(vals, Players, file):
     icon_nog_ops(vals, Players, file)
@@ -57,10 +106,14 @@ def icons(vals, Players, file):
     # if P4 icon is clicked while it is still available
     icon_john_wick(vals, Players, file)
 
-def continue_button(vals):
+
+def continue_button_2(vals):
     if (510 < vals.mx < 690) and (480 < vals.my < 510) and vals.player == 5:
         # TEST FOR WHEN THE CONTINUE BUTTON HAS BEEN CLICKED
-        print("You clicked start Again")
+        print(f'{vals.plays[0].name} ')
+        print(f'{vals.plays[1].name} ')
+        print(f'{vals.plays[2].name} ')
+        print(f'{vals.plays[3].name} ')
         vals.SELEC = False
         vals.GAME = True
         vals.player = 1
@@ -69,6 +122,7 @@ def continue_button(vals):
         vals.P3 = True
         vals.P4 = True
 
+
 def return_to_game(scrn, pygame, file, vals, board):
     if (50 < vals.mx < 352) and (715 < vals.my < 750):
         vals.INFO = False
@@ -76,10 +130,12 @@ def return_to_game(scrn, pygame, file, vals, board):
         vals.GAME = True
         print_board(scrn, pygame, file, vals, board)
 
+
 def settings_button(vals):
     if (8 < vals.mx < 91) and (20 < vals.my < 36):
         vals.GAME = False
         vals.SETTINGS = True
+
 
 def volume_button(vals, mixer):
     if (360 < vals.mx < 380) and (280 < vals.my < 315):
@@ -95,6 +151,7 @@ def volume_button(vals, mixer):
     elif (838 < vals.mx < 905) and (280 < vals.my < 315):
         mixer.music.set_volume(1)
 
+
 def resize_screen(vals, pygame):
     if (528 < vals.mx < 674) and (187 < vals.my < 211):
         pygame.display.set_mode((1200, 800))
@@ -102,6 +159,7 @@ def resize_screen(vals, pygame):
     elif (729 < vals.mx < 872) and (187 < vals.my < 211):
         pygame.display.set_mode((1800, 900))
         vals.full_screen = True
+
 
 def screen_mode(vals):
     if (495 < vals.mx < 708) and (382 < vals.my < 411):
@@ -115,8 +173,13 @@ def info_button(vals):
         vals.GAME = False
         vals.INFO = True
 
+
 def roll_dice(vals, mixer, file, pygame, board, random):
-    if (875 < vals.mx < 1175) and (50 < vals.my < 750) and vals.DICE:
+    '''Overrider = False
+    if (vals.p_1.CPU and vals.player == 1) or (vals.p_2.CPU and vals.player == 2) or (vals.p_3.CPU and vals.player == 3) or (vals.p_4.CPU and vals.player == 4):
+        Overrider = True
+    if ((875 < vals.mx < 1175) and (50 < vals.my < 750) and vals.DICE) or Overrider:'''
+    if ((875 < vals.mx < 1175) and (50 < vals.my < 750) and vals.DICE):
         # declares that the player just rolled
         vals.DICE = False
         vals.DOUBLES = False
@@ -143,7 +206,7 @@ def roll_dice(vals, mixer, file, pygame, board, random):
             current_player.money -= board[current_player.space].price
             print(f'You gained {-board[current_player.space].price} materials!')
 
-        for p in range(0,3):
+        for p in range(0, 3):
             owner = vals.plays[p]
             if board[current_player.space] in owner.inventory and owner != current_player:
                 print(f'{owner.name} owns this space.')
@@ -171,6 +234,7 @@ def roll_dice(vals, mixer, file, pygame, board, random):
                         mixer.music.play()
                         print(f'{current_player.name} died :(')
                     print(f'{current_player.name} took 50 damage')
+
         def check_for_win():
             if vals.P1 and not vals.P2 and not vals.P3 and not vals.P4:
                 print()
@@ -203,25 +267,37 @@ def roll_dice(vals, mixer, file, pygame, board, random):
                 vals.winner = vals.plays[3]
                 vals.WIN = True
                 vals.GAME = False
+
         check_for_win()
 
         current_player.get_icon_location(board)
 
+
 def check_doubles(vals):
-    if (875 < vals.mx < 1175) and (50 < vals.my < 750) and vals.num1 == vals.num2:
+    '''Overrider = False
+    if (vals.p_1.CPU and vals.player == 1) or (vals.p_2.CPU and vals.player == 2) or (vals.p_3.CPU and vals.player == 3) or (vals.p_4.CPU and vals.player == 4):
+        Overrider = True
+    if ((875 < vals.mx < 1175) and (50 < vals.my < 750) and vals.num1 == vals.num2) or Overrider == True:'''
+    if ((875 < vals.mx < 1175) and (50 < vals.my < 750) and vals.num1 == vals.num2):
         # declares that the player has doubles
-        vals.plays[vals.player-1].doubles_count += 1
+        vals.plays[vals.player - 1].doubles_count += 1
         vals.DOUBLES = True
         vals.DICE = False
         vals.ROLLING = False
+
 
     elif (875 < vals.mx < 1175) and (50 < vals.my < 750) and vals.DOUBLES:
         vals.DOUBLES = False
         vals.DICE = True
         vals.ROLLING = False
 
+
 def next_turn(vals, random):
-    if (920 < vals.mx < 1130) and (5 < vals.my < 45) and not vals.DICE and not vals.DOUBLES:
+    '''Overrider = False
+    if (vals.p_1.CPU and vals.player == 1) or (vals.p_2.CPU and vals.player == 2) or (vals.p_3.CPU and vals.player == 3) or (vals.p_4.CPU and vals.player == 4):
+        Overrider = True
+    if ((920 < vals.mx < 1130) and (5 < vals.my < 45) and not vals.DICE and not vals.DOUBLES) or Overrider == True:'''
+    if ((920 < vals.mx < 1130) and (5 < vals.my < 45) and not vals.DICE and not vals.DOUBLES):
         vals.plays[vals.player - 1].doubles_count = 0
         vals.DICE = True
         vals.DOUBLES = False
@@ -230,6 +306,8 @@ def next_turn(vals, random):
         vals.player += 1
         if vals.player > 4:
             vals.player -= 4
+            # if vals.player.CPU:
+            # CPU_Play(vals)
         if not vals.P1 and vals.player == 1:
             vals.player = 2
         if not vals.P2 and vals.player == 2:
@@ -243,28 +321,82 @@ def next_turn(vals, random):
 
 
 def roll_again(vals, random):
-    if (920 < vals.mx < 1130) and (5 < vals.my < 45):
+    '''Overrider = False
+    if (vals.p_1.CPU and vals.player == 1) or (vals.p_2.CPU and vals.player == 2) or (vals.p_3.CPU and vals.player == 3) or (vals.p_4.CPU and vals.player == 4):
+        Overrider = True
+    if ((920 < vals.mx < 1130) and (5 < vals.my < 45)) or Overrider == True:'''
+    if ((920 < vals.mx < 1130) and (5 < vals.my < 45)):
         # resets the rolling values to allow the next turn
         vals.DICE = True
         vals.DOUBLES = False
         vals.num1 = random.randint(1, 6)
         vals.num2 = random.randint(1, 6)
 
+
 def purchase(vals, board):
-    if board[vals.plays[vals.player - 1].space].buyable and board[vals.plays[vals.player - 1].space] not in vals.plays[vals.player - 1].inventory:
+    '''Overrider = False
+    if (vals.p_1.CPU and vals.player == 1) or (vals.p_2.CPU and vals.player == 2) or (vals.p_3.CPU and vals.player == 3) or (vals.p_4.CPU and vals.player == 4):
+        Overrider = True'''
+    if board[vals.plays[vals.player - 1].space].buyable and board[vals.plays[vals.player - 1].space] not in vals.plays[
+        vals.player - 1].inventory:
         if vals.plays[vals.player - 1].money > board[vals.plays[vals.player - 1].space].price:
-            if (669 < vals.mx < 852) and (700 < vals.my < 740):
+            '''if ((669 < vals.mx < 852) and (700 < vals.my < 740)) or Overrider == True:'''
+            if ((669 < vals.mx < 852) and (700 < vals.my < 740)):
                 vals.plays[vals.player - 1].add_to_inventory(board[vals.plays[vals.player - 1].space])
                 board[vals.plays[vals.player - 1].space].buyable = False
                 vals.plays[vals.player - 1].money -= board[vals.plays[vals.player - 1].space].price
                 board[vals.plays[vals.player - 1].space].owner = vals.plays[vals.player - 1]
-                print(f'{vals.plays[vals.player - 1].name} bought {board[vals.plays[vals.player - 1].space].name} for {board[vals.plays[vals.player - 1].space].price}')
+                print(
+                    f'{vals.plays[vals.player - 1].name} bought {board[vals.plays[vals.player - 1].space].name} for {board[vals.plays[vals.player - 1].space].price}')
+
 
 def pay(vals, board):
+    '''Overrider = False
+    if (vals.p_1.CPU and vals.player == 1) or (vals.p_2.CPU and vals.player == 2) or (vals.p_3.CPU and vals.player == 3) or (vals.p_4.CPU and vals.player == 4):
+        Overrider = True
+    if board[vals.plays[vals.player - 1].space].name == 'Jail' and vals.plays[vals.player - 1].jail:'''
     if board[vals.plays[vals.player - 1].space].name == 'Jail' and vals.plays[vals.player - 1].jail:
-            if (669 < vals.mx < 852) and (700 < vals.my < 740) and vals.plays[vals.player - 1].money >= 50:
-                current_player = vals.plays[vals.player - 1]
-                current_player.jail = False
-                current_player.money -= 50
-                current_player.get_icon_location(board)
-                print(f'{current_player.name} paid to get out of jail')
+        '''if ((669 < vals.mx < 852) and (700 < vals.my < 740) and vals.plays[
+            vals.player - 1].money >= 50) or Overrider == True:'''
+        if ((669 < vals.mx < 852) and (700 < vals.my < 740) and vals.plays[
+            vals.player - 1].money >= 50):
+            current_player = vals.plays[vals.player - 1]
+            current_player.jail = False
+            current_player.money -= 50
+            current_player.get_icon_location(board)
+            print(f'{current_player.name} paid to get out of jail')
+
+
+def sound_board(pygame, vals, file, mixer):
+    if (1600 < vals.mx < 1750) and (0 < vals.my < 150):
+        mixer.music.load(file.dance_sound)
+        pygame.mixer.music.queue(file.music)
+        mixer.music.play()
+        mixer.music.set_volume(1)
+    if (1600 < vals.mx < 1750) and (150 < vals.my < 300):
+        mixer.music.load(file.goofy_laugh_sound)
+        pygame.mixer.music.queue(file.music)
+        mixer.music.play()
+        mixer.music.set_volume(1)
+    if (1600 < vals.mx < 1750) and (300 < vals.my < 450):
+        mixer.music.load(file.hitmarker_sound)
+        pygame.mixer.music.queue(file.music)
+        mixer.music.play()
+        mixer.music.set_volume(1)
+    if (1600 < vals.mx < 1750) and (450 < vals.my < 600):
+        mixer.music.load(file.fall_sound)
+        pygame.mixer.music.queue(file.music)
+        mixer.music.play()
+        mixer.music.set_volume(0.15)
+    if (1600 < vals.mx < 1750) and (600 < vals.my < 750):
+        mixer.music.load(file.slang_sound)
+        pygame.mixer.music.queue(file.music)
+        mixer.music.play()
+        mixer.music.set_volume(1)
+    if (1600 < vals.mx < 1750) and (750 < vals.my < 900):
+        mixer.music.load(file.cricket_sound)
+        pygame.mixer.music.queue(file.music)
+        mixer.music.play()
+        mixer.music.set_volume(1)
+
+
