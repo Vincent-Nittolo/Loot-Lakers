@@ -3,6 +3,7 @@ import pygame
 from pygame import mixer, MOUSEBUTTONUP, MOUSEBUTTONDOWN
 import random
 from buttons import *
+from pygame.examples.aliens import Player
 from values import Values
 from files import File
 from spaces import make_board
@@ -61,6 +62,7 @@ while status:
                 continue_button_2(vals)
 
             if vals.GAME:
+                pay(vals, board)
 
                 settings_button(vals)
 
@@ -80,8 +82,6 @@ while status:
 
                 purchase(vals, board)
 
-                pay(vals, board)
-
                 print_board(scrn, pygame, file, vals, board)
 
             if vals.INFO:
@@ -95,11 +95,11 @@ while status:
                 print_settings(scrn, pygame, file, vals)
                 return_to_game(scrn, pygame, file, vals, board)
 
-            if vals.WIN:
-                print_win(scrn, vals, pygame, file, mixer)
-
             if vals.full_screen and not vals.SETTINGS:
                 sound_board(pygame, vals, file, mixer)
+
+
+            print(f'{vals.mx} {vals.my}')
 
         elif i.type == MOUSEBUTTONUP and i.button == 1:
             vals.clicking = False
@@ -133,6 +133,19 @@ while status:
 
                 print_board(scrn, pygame, file, vals, board)
 
+        if vals.nums_of_turns >100:
+            temp = []
+            for k in range(1, 3):
+                if vals.plays[i].health > 0:
+                    temp.append(vals.plays[i])
+            vals.winner = random.choice(temp)
+            mixer.music.load(file.win_sound)
+            pygame.mixer.music.queue(file.music)
+            mixer.music.play()
+            vals.WIN = True
+
+        if vals.WIN:
+            print_win(scrn, vals, pygame, file, mixer)
 
         print_start(scrn, pygame, file, vals)
         print_dice(pygame, scrn, vals)
