@@ -175,10 +175,6 @@ def info_button(vals):
 
 
 def roll_dice(vals, mixer, file, pygame, board, random):
-    '''Overrider = False
-    if (vals.p_1.CPU and vals.player == 1) or (vals.p_2.CPU and vals.player == 2) or (vals.p_3.CPU and vals.player == 3) or (vals.p_4.CPU and vals.player == 4):
-        Overrider = True
-    if ((875 < vals.mx < 1175) and (50 < vals.my < 750) and vals.DICE) or Overrider:'''
     if ((875 < vals.mx < 1175) and (50 < vals.my < 750) and vals.DICE):
         # declares that the player just rolled
         vals.DICE = False
@@ -274,10 +270,6 @@ def roll_dice(vals, mixer, file, pygame, board, random):
 
 
 def check_doubles(vals):
-    '''Overrider = False
-    if (vals.p_1.CPU and vals.player == 1) or (vals.p_2.CPU and vals.player == 2) or (vals.p_3.CPU and vals.player == 3) or (vals.p_4.CPU and vals.player == 4):
-        Overrider = True
-    if ((875 < vals.mx < 1175) and (50 < vals.my < 750) and vals.num1 == vals.num2) or Overrider == True:'''
     if ((875 < vals.mx < 1175) and (50 < vals.my < 750) and vals.num1 == vals.num2):
         # declares that the player has doubles
         vals.plays[vals.player - 1].doubles_count += 1
@@ -293,10 +285,6 @@ def check_doubles(vals):
 
 
 def next_turn(vals, random):
-    '''Overrider = False
-    if (vals.p_1.CPU and vals.player == 1) or (vals.p_2.CPU and vals.player == 2) or (vals.p_3.CPU and vals.player == 3) or (vals.p_4.CPU and vals.player == 4):
-        Overrider = True
-    if ((920 < vals.mx < 1130) and (5 < vals.my < 45) and not vals.DICE and not vals.DOUBLES) or Overrider == True:'''
     if ((920 < vals.mx < 1130) and (5 < vals.my < 45) and not vals.DICE and not vals.DOUBLES):
         vals.plays[vals.player - 1].doubles_count = 0
         vals.DICE = True
@@ -321,10 +309,6 @@ def next_turn(vals, random):
 
 
 def roll_again(vals, random):
-    '''Overrider = False
-    if (vals.p_1.CPU and vals.player == 1) or (vals.p_2.CPU and vals.player == 2) or (vals.p_3.CPU and vals.player == 3) or (vals.p_4.CPU and vals.player == 4):
-        Overrider = True
-    if ((920 < vals.mx < 1130) and (5 < vals.my < 45)) or Overrider == True:'''
     if ((920 < vals.mx < 1130) and (5 < vals.my < 45)):
         # resets the rolling values to allow the next turn
         vals.DICE = True
@@ -334,13 +318,9 @@ def roll_again(vals, random):
 
 
 def purchase(vals, board):
-    '''Overrider = False
-    if (vals.p_1.CPU and vals.player == 1) or (vals.p_2.CPU and vals.player == 2) or (vals.p_3.CPU and vals.player == 3) or (vals.p_4.CPU and vals.player == 4):
-        Overrider = True'''
     if board[vals.plays[vals.player - 1].space].buyable and board[vals.plays[vals.player - 1].space] not in vals.plays[
         vals.player - 1].inventory:
         if vals.plays[vals.player - 1].money > board[vals.plays[vals.player - 1].space].price:
-            '''if ((669 < vals.mx < 852) and (700 < vals.my < 740)) or Overrider == True:'''
             if ((669 < vals.mx < 852) and (700 < vals.my < 740)):
                 vals.plays[vals.player - 1].add_to_inventory(board[vals.plays[vals.player - 1].space])
                 board[vals.plays[vals.player - 1].space].buyable = False
@@ -351,13 +331,7 @@ def purchase(vals, board):
 
 
 def pay(vals, board):
-    '''Overrider = False
-    if (vals.p_1.CPU and vals.player == 1) or (vals.p_2.CPU and vals.player == 2) or (vals.p_3.CPU and vals.player == 3) or (vals.p_4.CPU and vals.player == 4):
-        Overrider = True
-    if board[vals.plays[vals.player - 1].space].name == 'Jail' and vals.plays[vals.player - 1].jail:'''
     if board[vals.plays[vals.player - 1].space].name == 'Jail' and vals.plays[vals.player - 1].jail:
-        '''if ((669 < vals.mx < 852) and (700 < vals.my < 740) and vals.plays[
-            vals.player - 1].money >= 50) or Overrider == True:'''
         if ((669 < vals.mx < 852) and (700 < vals.my < 740) and vals.plays[
             vals.player - 1].money >= 50):
             current_player = vals.plays[vals.player - 1]
