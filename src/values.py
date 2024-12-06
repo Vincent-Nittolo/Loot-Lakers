@@ -50,6 +50,7 @@ class Values:
         self._jx = 0
         self._jy = 0
         self._num_players = 0
+        self._nums_of_turns = 0
 
     @property
     def DICE(self):
@@ -369,3 +370,11 @@ class Values:
     @num_players.setter
     def num_players(self, value):
         self._num_players = value
+
+    @property
+    def nums_of_turns(self):
+        return self._nums_of_turns
+
+    @nums_of_turns.setter
+    def nums_of_turns(self, value):
+        self._nums_of_turns = value
