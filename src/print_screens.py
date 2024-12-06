@@ -7,7 +7,27 @@ def print_start(scrn, pygame, file, vals):
         render_images(pygame, file.start, scrn, (300, 120), (450, 450))
         render_images(pygame, file.title, scrn, (900, 200), (150, 150))
 
-def print_selec(scrn, pygame, file, vals):
+def print_num_players(scrn, pygame, file, vals):
+    scrn.fill(vals.current)
+
+    #diplays icons for each mode
+    if not vals.solos and not vals.duos and not vals.trios and not vals.squads:
+        # tells the user to pick the amount of players
+        render_text(vals.font1, scrn, f'Please choose the amount of players!', (245, 245, 245), (600, 50))
+        render_images(pygame, file.solo, scrn, (300, 300), (100, 100))
+
+        render_images(pygame, file.duos, scrn, (300, 300), (800, 100))
+        render_images(pygame, file.trios, scrn, (300, 300), (100, 450))
+        render_images(pygame, file.squads, scrn, (300, 300), (800, 450))
+
+    if (vals.solos or vals.duos or vals.trios or vals.squads):
+        render_text(vals.font1, scrn, f'Please Continue!', (245, 245, 245), (200, 50))
+        render_text(vals.font1, scrn, f'Continue', (245, 245, 245), (600, 500))
+        '''scrn.fill(vals.current)
+        render_text(vals.font1, scrn, f'Continue', (245, 245, 245), (600, 500))'''
+
+
+def print_selec(Players, scrn, pygame, file, vals):
 
     scrn.fill(vals.current)
     render_images(pygame, file.title, scrn, (500, 100), (650, 5))
@@ -22,17 +42,108 @@ def print_selec(scrn, pygame, file, vals):
         render_text(vals.font1, scrn, f'Continue', (245, 245, 245), (600, 500))
 
     #only shows the icons when they have not been selected yet
-    if vals.P1:
-        render_images(pygame, file.nog_ops, scrn, (300, 300), (100, 100))
+    if vals.num_players != 0:
+        if vals.P1:
+            render_images(pygame, file.nog_ops, scrn, (300, 300), (100, 100))
 
-    if vals.P2:
-        render_images(pygame, file.jonesy, scrn, (300, 300), (800, 100))
+        if vals.P2:
+            render_images(pygame, file.jonesy, scrn, (300, 300), (800, 100))
 
-    if vals.P3:
-        render_images(pygame, file.raven, scrn, (300, 300), (100, 450))
+        if vals.P3:
+            render_images(pygame, file.raven, scrn, (300, 300), (100, 450))
 
-    if vals.P4:
-        render_images(pygame, file.john_wick, scrn, (300, 300), (800, 450))
+        if vals.P4:
+            render_images(pygame, file.john_wick, scrn, (300, 300), (800, 450))
+
+    else:
+        if vals.P1 is True:
+            vals.P1 = False
+            if vals.player == 2:
+                p_2 = Players(1, vals.player, file)
+                p_2.set_start_val()
+                vals.p_2 = p_2
+                vals.p_2.CPU = True
+                vals.plays.append(vals.p_2)
+            elif vals.player == 3:
+                p_3 = Players(1, vals.player, file)
+                p_3.set_start_val()
+                vals.p_3 = p_3
+                vals.p_3.CPU = True
+                vals.plays.append(vals.p_3)
+            elif vals.player == 4:
+                p_4 = Players(1, vals.player, file)
+                p_4.set_start_val()
+                vals.p_4 = p_4
+                vals.p_4.CPU = True
+                vals.plays.append(vals.p_4)
+            vals.player += 1
+
+        if vals.P2 is True:
+            vals.P2 = False
+            if vals.player == 2:
+                p_2 = Players(2, vals.player, file)
+                p_2.set_start_val()
+                vals.p_2 = p_2
+                vals.p_2.CPU = True
+                vals.plays.append(vals.p_2)
+            elif vals.player == 3:
+                p_3 = Players(2, vals.player, file)
+                p_3.set_start_val()
+                vals.p_3 = p_3
+                vals.p_3.CPU = True
+                vals.plays.append(vals.p_3)
+            elif vals.player == 4:
+                p_4 = Players(2, vals.player, file)
+                p_4.set_start_val()
+                vals.p_4 = p_4
+                vals.p_4.CPU = True
+                vals.plays.append(vals.p_4)
+            vals.player += 1
+
+        if vals.P3 is True:
+            vals.P3 = False
+            if vals.player == 2:
+                p_2 = Players(3, vals.player, file)
+                p_2.set_start_val()
+                vals.p_2 = p_2
+                vals.p_2.CPU = True
+                vals.plays.append(vals.p_2)
+            elif vals.player == 3:
+                p_3 = Players(3, vals.player, file)
+                p_3.set_start_val()
+                vals.p_3 = p_3
+                vals.p_3.CPU = True
+                vals.plays.append(vals.p_3)
+            elif vals.player == 4:
+                p_4 = Players(3, vals.player, file)
+                p_4.set_start_val()
+                vals.p_4 = p_4
+                vals.p_4.CPU = True
+                vals.plays.append(vals.p_4)
+            vals.player += 1
+
+        if vals.P4 is True:
+            vals.P4 = False
+            if vals.player == 2:
+                p_2 = Players(4, vals.player, file)
+                p_2.set_start_val()
+                vals.p_2 = p_2
+                vals.p_2.CPU = True
+                vals.plays.append(vals.p_2)
+            elif vals.player == 3:
+                p_3 = Players(4, vals.player, file)
+                p_3.set_start_val()
+                vals.p_3 = p_3
+                vals.p_3.CPU = True
+                vals.plays.append(vals.p_3)
+            elif vals.player == 4:
+                p_4 = Players(4, vals.player, file)
+                p_4.set_start_val()
+                vals.p_4 = p_4
+                vals.p_4.CPU = True
+                vals.plays.append(vals.p_4)
+            vals.player += 1
+
 
 def print_info(scrn, pygame, file, vals):
     scrn.fill(vals.current)
@@ -182,19 +293,19 @@ def print_board(scrn, pygame, file, vals, board):
 
 
     if vals.P1:
-        vals.plays[0].render_circle(scrn, pygame)
+        render_circle(vals.plays[0], scrn, pygame)
     else:
         pygame.draw.rect(scrn, (0,0,0), pygame.Rect(265, 675, 390, 100))
     if vals.P2:
-        vals.plays[1].render_circle(scrn, pygame)
+        render_circle(vals.plays[1], scrn, pygame)
     else:
         pygame.draw.rect(scrn, (0,0,0), pygame.Rect(25, 265, 100, 390))
     if vals.P3:
-        vals.plays[2].render_circle(scrn, pygame)
+        render_circle(vals.plays[2], scrn, pygame)
     else:
         pygame.draw.rect(scrn, (0,0,0), pygame.Rect(265, 25, 390, 100))
     if vals.P4:
-        vals.plays[3].render_circle(scrn, pygame)
+        render_circle(vals.plays[3], scrn, pygame)
     else:
         pygame.draw.rect(scrn, (0,0,0), pygame.Rect(675, 265, 100, 390))
 
@@ -208,5 +319,17 @@ def print_win(scrn, vals, pygame, file, mixer):
         render_images(pygame, file.win, scrn, (400, 100), (750, 5))
         render_images(pygame, vals.winner.img, scrn, (300, 300), (100, 100))
 
-def print_easter_egg(scrn, pygame, vals):
+def print_easter_egg(file, scrn, pygame, vals):
     pygame.draw.rect(scrn, vals.current, pygame.Rect(1175, 100, 400, 800))
+
+    render_images(pygame, file.dance, scrn, (150, 150), (1600, 0))
+
+    render_images(pygame, file.goofy_laugh, scrn, (150, 150), (1600, 150))
+
+    render_images(pygame, file.hitmarker, scrn, (150, 150), (1600, 300))
+
+    render_images(pygame, file.fall, scrn, (150, 150), (1600, 450))
+
+    render_images(pygame, file.cat, scrn, (150, 150),(1600, 600))
+
+    render_images(pygame, file.cricket, scrn, (150, 150), (1600, 750))
