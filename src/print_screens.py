@@ -148,6 +148,8 @@ def print_info(scrn, pygame, file, vals):
     render_images(pygame, file.title, scrn, (500, 100), (650, 5))
     pygame.draw.rect(scrn, (0, 0, 0), pygame.Rect(97, 97, 86, 121))
     pygame.draw.rect(scrn, (0, 0, 0), pygame.Rect(97, 247, 86, 121))
+    pygame.draw.rect(scrn, (0, 0, 0), pygame.Rect(97, 397, 86, 121))
+    pygame.draw.rect(scrn, (0, 0, 0), pygame.Rect(97, 447, 86, 121))
 
     imp = pygame.image.load(file.map)
     imp = pygame.transform.scale(imp, (800, 800))
@@ -158,6 +160,8 @@ def print_info(scrn, pygame, file, vals):
 
     render_text(vals.font2, scrn, f'When you land on a launchpad tile, you will move 1-6 additional spaces!', (245, 245, 245), (575, 157))
     render_text(vals.font2, scrn, f'When you land on a chest tile,  you will gain materials!',(245, 245, 245), (495, 307))
+    render_text(vals.font2, scrn, f'The game will end when one person is left standing!', (245, 245, 245),(481, 457))
+    render_text(vals.font2, scrn, f'If the game reaches over 100 turns, there will be a final heal off!', (245, 245, 245), (535, 607))
     render_text(vals.font1, scrn, f'Rules: ', (245, 245, 245),(163, 50))
     render_text(vals.font1, scrn, f'Return to Game', (245, 245, 245), (200, 735))
 
@@ -250,6 +254,9 @@ def print_board(scrn, pygame, file, vals, board):
 
     render_text_with_bg(vals.font3, scrn, f'{vals.plays[vals.player-1].name}\'s turn', (245, 245, 245),vals.plays[vals.player-1].color, (775, 25))
 
+    if vals.plays[vals.player-1].jail:
+        render_text(vals.font1, scrn, 'Next Turn:', (245, 245, 245), (1025, 25))
+
     if vals.DICE:
         pass
 
@@ -270,6 +277,7 @@ def print_board(scrn, pygame, file, vals, board):
         render_text(vals.font1, scrn, f'You Rolled {vals.num1 + vals.num2}!', (245, 245, 245), (1025, 700))
 
         # displays the Next Turn button if the player can roll
+
         render_text(vals.font1, scrn, 'Next Turn:', (245, 245, 245), (1025, 25))
 
     if board[vals.plays[vals.player-1].space].buyable and board[vals.plays[vals.player-1].space] not in vals.plays[vals.player-1].inventory:
@@ -288,7 +296,6 @@ def print_board(scrn, pygame, file, vals, board):
     for spaces in board:
         spaces.print_owner(pygame, scrn)
 
-
     if vals.P1:
         render_circle(vals.plays[0], scrn, pygame)
     else:
@@ -306,11 +313,9 @@ def print_board(scrn, pygame, file, vals, board):
     else:
         pygame.draw.rect(scrn, (0,0,0), pygame.Rect(675, 265, 100, 390))
 
+    render_text(vals.font2, scrn, f'Turn {vals.nums_of_turns}', (245, 245, 245), (75, 725))
+
 def print_win(scrn, vals, pygame, file, mixer):
-    if vals.WIN:
-        mixer.music.load(file.win_sound)
-        pygame.mixer.music.queue(file.music)
-        mixer.music.play()
         scrn.fill(vals.current)
 
         render_images(pygame, file.win, scrn, (400, 100), (750, 5))
