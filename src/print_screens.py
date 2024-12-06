@@ -23,8 +23,6 @@ def print_num_players(scrn, pygame, file, vals):
     if (vals.solos or vals.duos or vals.trios or vals.squads):
         render_text(vals.font1, scrn, f'Please Continue!', (245, 245, 245), (200, 50))
         render_text(vals.font1, scrn, f'Continue', (245, 245, 245), (600, 500))
-        '''scrn.fill(vals.current)
-        render_text(vals.font1, scrn, f'Continue', (245, 245, 245), (600, 500))'''
 
 
 def print_selec(Players, scrn, pygame, file, vals):
@@ -245,10 +243,10 @@ def print_board(scrn, pygame, file, vals, board):
             elif num == 4:
                 p.p4_out(vals, scrn, pygame)
 
-    process(vals.p_1)
-    process(vals.p_2)
-    process(vals.p_3)
-    process(vals.p_4)
+    process(vals.plays[0])
+    process(vals.plays[1])
+    process(vals.plays[2])
+    process(vals.plays[3])
 
     render_text_with_bg(vals.font3, scrn, f'{vals.plays[vals.player-1].name}\'s turn', (245, 245, 245),vals.plays[vals.player-1].color, (775, 25))
 
@@ -260,7 +258,6 @@ def print_board(scrn, pygame, file, vals, board):
 
         # Displays the sum of the numbers rolled as well as that they were doubles
         render_text(vals.font1, scrn, f'Doubles {vals.num1 + vals.num2}!', (245, 245, 245), (1000, 630))
-
 
         # sets the text size and location, and prints the Dice label
         render_text(vals.font1, scrn, f'Dice:', (245, 245, 245), (960, 700))
