@@ -25,6 +25,7 @@ class Players:
         self._health = 50
         self._jail = False
         self._doubles_count = 0
+        self._CPU = False
 
     # returns the name of the player
     @property
@@ -152,6 +153,14 @@ class Players:
             self.jail = True
             self.space = 8
 
+    @property
+    def CPU(self):
+        return self._CPU
+
+    @CPU.setter
+    def CPU(self, tf):
+        self._CPU = tf
+
     # sets the name of the player depending on what icon they chose
     def set_playa(self, num, file):
         if num == 1:
@@ -236,10 +245,3 @@ class Players:
     def p4_out(self, vals, scrn, pygame):
         self.render_output((675, 145), 710, 260, vals, scrn, pygame)
 
-    def render_circle(self, scrn, pygame):
-        if self.space == 8 and self.jail:
-            self.loc_x = 170 + 10*self.num
-            self.loc_y = 585 + 10*self.num
-            pygame.draw.circle(scrn, self.color, [self.loc_x, self.loc_y], 10, 0)
-        else:
-            pygame.draw.circle(scrn, self.color, [self.loc_x, self.loc_y], 10, 0)
