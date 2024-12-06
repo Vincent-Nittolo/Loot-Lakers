@@ -1,32 +1,35 @@
 class File:
     def __init__(self):
-        self._title = "Assets/Title_text.png"
-        self._map = "Assets/Mappy.jpg"
-        self._music = "Assets/01. Battle Royal (Guitar Theme).mp3"
-        self._dice = "Assets/dice.png"
-        self._roll_effect = "Assets/dice-142528.mp3"
-        self._start = "Assets/start_button.jpg"
-        self._nog_ops = "Assets/nog_ops.jpg"
-        self._jonesy = "Assets/jonesy.jpg"
-        self._raven = "Assets/Raven.jpg"
-        self._john_wick = "Assets/John_wick.jpg"
-        self._materials = "Assets/Materials.png"
-        self._win = "Assets/winnerPicture.png"
-        self._death = "Assets/death.mp3"
-        self._win_sound = "Assets/win.mp3"
-        self._dance = "Assets/default_dance.jpg"
-        self._dance_sound = "Assets/default_dance.mp3"
-        self._hitmarker = "Assets/hitmarker.jpg"
-        self._hitmarker_sound = "Assets/hitmarker_sound.mp3"
-        self._goofy_laugh = "Assets/goofy_laugh.jpg"
-        self._goofy_laugh_sound = "Assets/goofy_laugh_sound.mp3"
-        self._fall = "Assets/fall.jpg"
-        self._fall_sound = "Assets/fall_sound.mp3"
-        self._cat = "Assets/cat.jpg"
-        self._slang_sound = "Assets/slang_sound.mp3"
-        self._cricket = "Assets/cricket.jpg"
-        self._cricket_sound = "Assets/cricket_sound.mp3"
-
+        self._title = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\Title_text.png"
+        self._map = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\Mappy.jpg"
+        self._music = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\01. Battle Royal (Guitar Theme).mp3"
+        self._dice = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\dice.png"
+        self._roll_effect = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\dice-142528.mp3"
+        self._start = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\start_button.jpg"
+        self._nog_ops = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\nog_ops.jpg"
+        self._jonesy = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\jonesy.jpg"
+        self._raven = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\Raven.jpg"
+        self._john_wick = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\John_wick.jpg"
+        self._materials = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\Materials.png"
+        self._win = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\winnerPicture.png"
+        self._death = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\death.mp3"
+        self._win_sound = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\win.mp3"
+        self._dance = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\default_dance.jpg"
+        self._dance_sound = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\default_dance.mp3"
+        self._hitmarker = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\hitmarker.jpg"
+        self._hitmarker_sound = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\hitmarker_sound.mp3"
+        self._goofy_laugh = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\goofy_laugh.jpg"
+        self._goofy_laugh_sound = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\goofy_laugh_sound.mp3"
+        self._fall = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\fall.jpg"
+        self._fall_sound = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\fall_sound.mp3"
+        self._cat = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\cat.jpg"
+        self._slang_sound = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\slang_sound.mp3"
+        self._cricket = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\cricket.jpg"
+        self._cricket_sound = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\cricket_sound.mp3"
+        self._solo = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\solo.jpg"
+        self._duos = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\duos.jpeg"
+        self._trios = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\trios.jpg"
+        self._squads = "C:\\Users\\vinny\\PycharmProjects\\FnMply\\Assets\\squads.jpg"
 
     @property
     def title(self):
@@ -106,3 +109,19 @@ class File:
     @property
     def cricket_sound(self):
         return self._cricket_sound
+
+    @property
+    def solo(self):
+        return self._solo
+
+    @property
+    def duos(self):
+        return self._duos
+
+    @property
+    def trios(self):
+        return self._trios
+
+    @property
+    def squads(self):
+        return self._squads
