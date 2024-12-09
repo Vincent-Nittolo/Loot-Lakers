@@ -35,7 +35,7 @@ For both our Functional and Non-Functional Requirements sections, we will have t
 
 # Software Artifacts
 These are our software artifacts that we used throughout the development of the project.
-* [Link to our Burn Down chart](Loot-Lakers/docs/BurnDown.pdf)
+* [Link to our Burn Down chart](BurnDown.pdf)
 * [Link to our Use Case Diagram](Loot-Lakers/artifacts/use_case_diagram/use_case_diagram.jpeg)
 - Still need Class or Object Diagram
 - Still need Sequence or Communication Diagram
