@@ -21,7 +21,6 @@ For both our Functional and Non-Functional Requirements sections, we will have t
 | FR8| The CPU shall move around the game board automatically.
 | FR9 |The CPU shall automatically use the characters(s) not chosen during the players selection screen.
 | FR10|If the CPU lands on a property owned by the user, the CPU shall automatically transfer the rent amount to the user based on the property's rent value.
-| FR11| If the CPU lands on a property owned by the user, the CPU shall automatically transfer the rent amount to the user based on the property's rent value.
 
 ## Non-Functional Requirements
 ### Performance and Scalability
