@@ -23,6 +23,7 @@ For both our Functional and Non-Functional Requirements sections, we will have t
 | FR10|If the CPU lands on a property owned by the user, the CPU shall automatically transfer the rent amount to the user based on the property's rent value.
 ### Game Logic (Player Interactions)
 | ID | Requirement |
+| :-------------: | :----------: |
 | FR11| Players shall be sent to jail when landing on "GO to jail", or when they roll doubles 3 times in a row. 
 | FR12| Players shall have a live health bar that displays their health. When the health reaches 0, the player "dies" in the game.
 | FR13| Players shall be able to roll the dice on their turn to progress throughout the board.
