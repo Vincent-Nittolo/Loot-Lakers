@@ -47,6 +47,14 @@ For both our Functional and Non-Functional Requirements sections, we will have t
 | NFR8 | The easter egg shall play their given sound recordings when pressed. This will be used by the players for fun, potentially to taunt their friends or to add sound effects when something happens in the game. |
 | NFR9 | The rules and settings screens shall adhere to the Fortnite theme, with the yellow and blue.|
 | NFR10 | The rules shall explain how some of the spaces work, as well as how to win.|
+### Win Screen
+| ID | Requirement |
+| :-------------: | :----------: |
+| NFR11 | The win music shall play when the win screen reached.|
+| NFR12 | The icon of the winner shall be present in the win screen.|
+| NFR13 | The iconic victory royale banner shall be present in the winscreen. |
+| NFR14 | No restart button shall be present so the player can bask in their win forever.|
+| NFR15 | The default music shall play after the win music concludes.|
 
 # Software Artifacts
 These are our software artifacts that we used throughout the development of the project.
