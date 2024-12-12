@@ -61,4 +61,4 @@ These are our software artifacts that we used throughout the development of the 
 * [Link to our Burn Down chart](BurnDown.pdf)
 * [Link to our Use Case Diagram](../artifacts/use_case_diagram/use_case_diagram.jpeg)
 * [Link to our Class Diagram](../artifacts/ClassDiagram.png)
-- Still need Sequence or Communication Diagram
+* [Link to our Communication Diagram](../artifacts/CommunicationDiagram.png)
