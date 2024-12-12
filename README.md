@@ -5,7 +5,7 @@ We have decided to make a game of Fortnite monopoly as the orignal was lack lust
 ## Team Members and Roles
 
 * [Vincent N](https://github.com/Vincent-Nittolo/CIS350-HW2-Nittolo/tree/main) (Team Lead)
-* [Caeleb Meyers](https://github.com/C-Stryke/CIS350-HW2-Meyers) (Designer)
+* [Caeleb Meyers](https://github.com/C-Stryke/CIS350-HW2-Meyers) (Designer, Developer)
 * [Josh Wedyke](https://github.com/wedykej/CIS350-HW2-Wedyke) (Scribe, Developer)
 * [Isaiah Alfaro](https://github.com/axvro/CIS350-HW2-Alfaro) (Systems Tester, Developer)
 
